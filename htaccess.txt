@@ -13,3 +13,10 @@ RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
 order allow,deny
 deny from all
 </files>
+
+// PROTEGER PLUGINS
+
+<Files ~ "\.(js|css)$">
+order allow,deny
+allow from all
+</Files>
