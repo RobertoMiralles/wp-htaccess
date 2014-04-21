@@ -6,8 +6,9 @@
 # Colaboran: Fernando Tellado @fernandot, Javier Santos @fjaviersantos,  
 #
 # IMPORTANTE: NO olvides cambiar tudominio.com por el dominio real de tu sitio.
+#             Algunas de las configuraciones que aparecen abajo pueden hacer que tu sitio deje de funcionar si no
+#             las configuras correctamente, ya que muchas son de ejemplo (por ejemplo IP 000.000.000.0000)
 #
-
 
 # protege el fichero htaccess by Fernando Tellado @fernandot
 order allow,deny
