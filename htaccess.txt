@@ -11,8 +11,10 @@
 #
 
 # protege el fichero htaccess by Fernando Tellado @fernandot
+<files ~ "^.*\.([Hh][Tt][Aa])">
 order allow,deny
 deny from all
+</files>
  
 # desactiva la firma del servidor by Fernando Tellado @fernandot
 ServerSignature Off
@@ -21,14 +23,16 @@ ServerSignature Off
 LimitRequestBody 10240000
  
 # protege wpconfig.php by Javier Santos @fjaviersantos
+<files wp-config.php>
 order allow,deny
 deny from all
+</files>
  
 #quien tiene acceso y quien no by Fernando Tellado @fernandot
-order allow,deny
+#order allow,deny
  
 #denegar desde 000.000.000.000 by Fernando Tellado @fernandot
-allow from all
+#allow from all
  
  
 # desactiva la navegacion de directorios by Fernando Tellado @fernandot
