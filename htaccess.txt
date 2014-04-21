@@ -3,58 +3,58 @@
 #  
 # Licencia: GPL V2 
 #
-# Colaboran: Fernando Tellado @fernandot,   
+# Colaboran: Fernando Tellado @fernandot, Javier Santos @fjaviersantos,  
 #
 # IMPORTANTE: NO olvides cambiar tudominio.com por el dominio real de tu sitio.
 #
 
 
-# protege el fichero htaccess
+# protege el fichero htaccess by Fernando Tellado @fernandot
 order allow,deny
 deny from all
  
-# desactiva la firma del servidor
+# desactiva la firma del servidor by Fernando Tellado @fernandot
 ServerSignature Off
  
-# limita la carga de archivos a 10mb
+# limita la carga de archivos a 10mb by Fernando Tellado @fernandot
 LimitRequestBody 10240000
  
-# protege wpconfig.php
+# protege wpconfig.php by Javier Santos @fjaviersantos
 order allow,deny
 deny from all
  
-#quien tiene acceso y quien no
+#quien tiene acceso y quien no by Fernando Tellado @fernandot
 order allow,deny
  
-#denegar desde 000.000.000.000
+#denegar desde 000.000.000.000 by Fernando Tellado @fernandot
 allow from all
  
  
-# desactiva la navegacion de directorios
+# desactiva la navegacion de directorios by Fernando Tellado @fernandot
 Options All -Indexes
  
  
-#bloquea los dominios indicados
+#bloquea los dominios indicados by Fernando Tellado @fernandot
 RewriteEngine on
 RewriteCond %{HTTP_REFERER} meneame\.com [NC]
 RewriteRule .* - [F]
  
-#desactiva el robo de imagenes con la opcion de una imagen personal
+#desactiva el robo de imagenes con la opcion de una imagen personal by Fernando Tellado @fernandot
 RewriteEngine on
 RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^http://(www\.)?tudominio.com/.*$ [NC]
 #RewriteRule \.(gif|jpg)$ - [F]
 #RewriteRule \.(gif|jpg)$ http://tudominio.com/imagen_robada.gif [R,L]
  
-# compresion php - usar con precaucion
+# compresion php - usar con precaucion by Fernando Tellado @fernandot
 php_value zlib.output_compression 16386
  
-# establece la url canonica (amigable)
+# establece la url canonica (amigable) by Fernando Tellado @fernandot
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^tudominio\.com$ [NC]
 RewriteRule ^(.*)$ http://www.tudominio.com/$1 [R=301,L]
  
-# protege de comentarios spam
+# protege de comentarios spam by Fernando Tellado @fernandot
 RewriteEngine On
 RewriteCond %{REQUEST_METHOD} POST
 RewriteCond %{REQUEST_URI} .wp-comments-post\.php*
@@ -63,22 +63,22 @@ RewriteCond %{HTTP_USER_AGENT} ^$
 RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
 RewriteRule ^post/([0-9]+)?/?([0-9]+)?/?$ /index.php?p=$1&page=$2 [QSA]
  
-# sin acceso a proc/self/environ
+# sin acceso a proc/self/environ by Fernando Tellado @fernandot
 RewriteCond %{QUERY_STRING} proc/self/environ [OR]
  
-# bloquear cualquier script que trate de establecer un valor mosConfig a través de una URL
+# bloquear cualquier script que trate de establecer un valor mosConfig a través de una URL by Fernando Tellado @fernandot
 RewriteCond %{QUERY_STRING} mosConfig_[a-zA-Z_]{1,21}(=|\%3D) [OR]
  
-# bloquear cualquier script que trate de colocarte código codificado base64_encode a través de una URL
+# bloquear cualquier script que trate de colocarte código codificado base64_encode a través de una URL by Fernando Tellado @fernandot
 RewriteCond %{QUERY_STRING} base64_encode.*(.*) [OR]
  
-# bloquea cualquier script que incluya la tag <script> en la URL
+# bloquea cualquier script que incluya la tag <script> en la URL by Fernando Tellado @fernandot
 RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
  
-# bloquea cualquier script que trate de establecer la variable PHP GLOBALS a través de una URL
+# bloquea cualquier script que trate de establecer la variable PHP GLOBALS a través de una URL by Fernando Tellado @fernandot
 RewriteCond %{QUERY_STRING} GLOBALS(=|[|\%[0-9A-Z]{0,2}) [OR]
  
-# bloquea cualquier script que trate de modificar una variable _REQUEST a través de una URL
+# bloquea cualquier script que trate de modificar una variable _REQUEST a través de una URL by Fernando Tellado @fernandot
 RewriteCond %{QUERY_STRING} _REQUEST(=|[|\%[0-9A-Z]{0,2})
  
 # manda a todas las peticiones bloqueadas a la página principal con un error de 403 Prohibido
