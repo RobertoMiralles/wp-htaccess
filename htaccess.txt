@@ -82,5 +82,5 @@ RewriteCond %{QUERY_STRING} GLOBALS(=|[|\%[0-9A-Z]{0,2}) [OR]
 # bloquea cualquier script que trate de modificar una variable _REQUEST a través de una URL by Fernando Tellado @fernandot
 RewriteCond %{QUERY_STRING} _REQUEST(=|[|\%[0-9A-Z]{0,2})
  
-# manda a todas las peticiones bloqueadas a la página principal con un error de 403 Prohibido
+# manda a todas las peticiones bloqueadas a la página principal con un error de 403 Prohibido by Fernando Tellado @fernandot
 RewriteRule ^(.*)$ index.php [F,L]
